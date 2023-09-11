@@ -93,7 +93,7 @@ const MiddleHeader = () => {
                     </Searcher>
                 </Box>
 
-                <Link to="/cart" >
+                <Link to="/cart"   >
                     <Box
                         sx={{
                             display: "flex",
@@ -104,14 +104,14 @@ const MiddleHeader = () => {
                         <Typography color={"white"} variant="h4" fontSize={{ xs: "21px", md: "27" }} fontWeight={"600"}   >سله التسوق</Typography>
 
                         <Box>
-                            <IconButton aria-label="cart">
+                            <IconButton sx={{ ".css-1e2uyl3": { color: "white" }, }}   aria-label="cart" color={"white"} >
                                 <Badge badgeContent={numberOfItems} color="error">
-                                    <ShoppingCartOutlined sx={{ fontSize: { xs: "25px", md: "30px" } }} />
+                                    <ShoppingCartOutlined sx={{ fontSize: { xs: "25px", md: "30px"} , fill : "white" }} />
                                 </Badge>
                             </IconButton>
                         </Box>
                     </Box>
-                    </Link>
+                </Link>
             </Box>
         </Container>
     );

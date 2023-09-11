@@ -74,7 +74,9 @@ const BottomHeader = ({ setIsOpen, isOpen }) => {
                             ".css-1vxvp5a-MuiPaper-root-MuiDrawer-paper":
                             {
                                 backgroundColor: theme.palette.primaryColor.main,
-                            }
+                            },
+                            textAlign : "center"
+
                         }}
                     >
                         <IconButton

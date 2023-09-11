@@ -159,7 +159,7 @@ const MoreInfo = ({ theme, id }) => (
         my: "5px",
         p: "8px 15px",
         borderRadius: "3px 15px",
-        transition: "150ms ease-in-out",
+        transition: "100ms linear",
         "&:hover": { borderRadius: "15px 3px" },
       }}
     >

@@ -1,9 +1,9 @@
 import { Box, Container, Typography, useTheme, useMediaQuery, Drawer, IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material';
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 const links = [
-    { id: 1, path : "/" , link: "الصفحه الرئيسيه", },
-    { id: 2, path  :"/products" , link: "الالكترونيات و الموبايلات", },
+    { id: 1, path: "/", link: "الصفحه الرئيسيه", },
+    { id: 2, path: "/products", link: "الالكترونيات و الموبايلات", },
     { id: 3, link: "المنزل و المطبخ", },
     { id: 4, link: "رجالي", },
     { id: 5, link: "نسائي", },
@@ -26,41 +26,41 @@ const BottomHeader = ({ setIsOpen, isOpen }) => {
         >
 
             {links.length > 1 ? (
-                links.map(({ id, link , path }) => (
-              
-                        <Box
-                            onClick={() => setIsOpen(false)}
-                key={id}
-                    
-                            sx={{
-                                color: "white",
-                                px: { xs: "0px", sm: "15px" },
-                                py: { xs: "8px", sm: 0 },
-                                cursor: "pointer",
-                            }}
-                        >
-                        <Link 
-                        to = {path}
+                links.map(({ id, link, path }) => (
+
+                    <Box
+                        onClick={() => setIsOpen(false)}
+                        key={id}
+
+                        sx={{
+                            color: "white",
+                            px: { xs: "0px", sm: "15px" },
+                            py: { xs: "8px", sm: 0 },
+                            cursor: "pointer",
+                        }}
+                    >
+                        <Link
+                            to={path}
                         >
                             <Typography
                                 variant={"h5"}
-                                fontSize={{ xs: "17px", sm  :"22px" }}
+                                fontSize={{ xs: "17px", sm: "22px" }}
                                 fontWeight={"500"}
                                 sx={{
                                     transition: "100ms color ease",
-                                    minWidth : "100px",
-                                    color : "white" ,
+                                    minWidth: "100px",
+                                    color: "white",
                                     "&:hover": {
                                         color: theme.palette.warningColor.main,
-                                        
+
                                     },
                                 }}
-                    
+
                             >
                                 {link}
                             </Typography>
-                            </Link>
-                        </Box>
+                        </Link>
+                    </Box>
                 ))
             ) : null}
         </Box>
@@ -70,13 +70,13 @@ const BottomHeader = ({ setIsOpen, isOpen }) => {
             <Box component={"nav"} sx={{ height: "30%", }}>
                 {isMobile ? (
                     <Drawer anchor="right" open={isOpen}
-                        sx={{
-                            ".css-1vxvp5a-MuiPaper-root-MuiDrawer-paper":
-                            {
+                        PaperProps={{
+                            style: {
                                 backgroundColor: theme.palette.primaryColor.main,
                             },
-                            textAlign : "center"
-
+                        }}
+                        sx={{
+                            textAlign: "center"
                         }}
                     >
                         <IconButton

@@ -1,5 +1,4 @@
 import { Box, Container, Typography, useTheme, Button } from "@mui/material";
-import { Delete } from "@mui/icons-material";
 import CartItems from "./CartItems";
 
 const cartItems = [
@@ -53,11 +52,13 @@ const Cart = () => {
   const total = cartItems.reduce((acc, current) => acc + current.price * current.quantity, 0);
 
 
+
+
+
   return (
     <Box>
       <Container sx={{ py: { xs: "20px", sm: "30px" }, display: "flex", flexDirection: { xs: "column-reverse", sm: "column" } }}>
         <Box sx={{ display: "flex", justifyContent: "end", alignItems: "center", mb: "10px" }} >
-
 
           <Box sx={{ backgroundColor: "white", p: "20px", width: { xs: "100%", sm: "35%" }, borderRadius: "4px", textAlign: "center" }} >
             <Typography variant="h6" color={theme.palette.successColor.main} fontSize={{ xs: "20px", sm: "24px" }} fontWeight={600}  >
@@ -90,12 +91,6 @@ const Cart = () => {
           </Box>
         </Box>
 
-
-
-
-
-
-
         <Box>
           <Typography
             variant="h2"
@@ -117,8 +112,6 @@ const Cart = () => {
               flexWrap: "wrap",
               justifyContent: { xs: "center", md: "start" }
             }}
-
-
           >
             {cartItems.map((item) => (
               <CartItems key={item.id} item={item} />
@@ -131,4 +124,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
 

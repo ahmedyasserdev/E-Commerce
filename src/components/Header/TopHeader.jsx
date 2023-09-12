@@ -14,7 +14,7 @@ const TopHeader = ({ setIsOpen }) => {
         }} >
             <Box sx={{ display: { xs: "block", md: "none" } }} >
                 <IconButton onClick={() => setIsOpen(prevIsOpen => !prevIsOpen)}>
-                    <Menu />
+                    <Menu sx= {{fill : "white"}}  />
                 </IconButton>
             </Box>
 

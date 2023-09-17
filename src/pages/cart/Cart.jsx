@@ -2,6 +2,7 @@ import { Box, Container, Typography, useTheme, Button } from "@mui/material";
 import CartItems from "./CartItems";
 import { useSelector } from "react-redux";
 import { cartItems, cartItemsNumber } from "../../redux/slices/cartSlice";
+import EmptyCartBtn from "./EmptyCartBtn";
 
 const Cart = () => {
   const theme = useTheme();
@@ -38,80 +39,88 @@ const Cart = () => {
           flexDirection: { xs: "column-reverse", sm: "column" },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-            mb: "10px",
-          }}
-        >
-          <Box
-            sx={{
-              backgroundColor: "white",
-              p: "20px",
-              width: { xs: "100%", sm: "35%" },
-              borderRadius: "4px",
-              textAlign: "center",
-            }}
-          >
-            <Typography
-              variant="h6"
-              color={theme.palette.successColor.main}
-              fontSize={{ xs: "20px", sm: "24px" }}
-              fontWeight={600}
-            >
-              طلبك جاهز للشحن الآن
-            </Typography>
 
-            <Box>
-              <Typography
-                variant="b"
-                color="#000"
-                fontSize={{ xs: "20px", sm: "24px" }}
-                fontWeight={600}
-              >
-                المجموع :
-              </Typography>
-              <Typography
-                variant="span"
-                color={theme.palette.greyColor.main}
-                fontSize={{ xs: "17px", sm: "21px" }}
-              >
-                {total}$
-              </Typography>
 
-              <Button
+        {
+          cartItemsLength === 0 ? null :
+            (
+              <Box
                 sx={{
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  transition: "100ms all linear",
-                  display: "block",
-                  "&:hover": {
-                    backgroundColor: theme.palette.infoColor.main,
-                    color: "white",
-                  },
-                  fontSize: { xs: "18px", sm: "22px" },
-                  color: theme.palette.infoColor.main,
-                  fontWeight: 600,
-                  mt: "12px",
-                  width: "100%",
-                  mx: "auto",
+                  display: "flex",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  mb: "10px",
                 }}
-                variant="contained"
               >
-                تابع عملية الشراء
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "white",
+                    p: "20px",
+                    width: { xs: "100%", sm: "35%" },
+                    borderRadius: "4px",
+                    textAlign: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    color={theme.palette.successColor.main}
+                    fontSize={{ xs: "20px", sm: "24px" }}
+                    fontWeight={600}
+                  >
+                    طلبك جاهز للشحن الآن
+                  </Typography>
+
+                  <Box>
+                    <Typography
+                      variant="b"
+                      color="#000"
+                      fontSize={{ xs: "20px", sm: "24px" }}
+                      fontWeight={600}
+                    >
+                      المجموع :
+                    </Typography>
+                    <Typography
+                      variant="span"
+                      color={theme.palette.greyColor.main}
+                      fontSize={{ xs: "17px", sm: "21px" }}
+                    >
+                      {total}$
+                    </Typography>
+
+                    <Button
+                      sx={{
+                        backgroundColor: "#fff",
+                        borderRadius: "8px",
+                        transition: "100ms all linear",
+                        display: "block",
+                        "&:hover": {
+                          backgroundColor: theme.palette.infoColor.main,
+                          color: "white",
+                        },
+                        fontSize: { xs: "18px", sm: "22px" },
+                        color: theme.palette.infoColor.main,
+                        fontWeight: 600,
+                        mt: "12px",
+                        width: "100%",
+                        mx: "auto",
+                      }}
+                      variant="contained"
+                    >
+                      تابع عملية الشراء
+
+                    </Button>
+                  </Box>
+                </Box>
+              </Box>
+            )
+        }
 
         <Box>
           <Typography
             variant="h2"
             sx={cartHeadingStyles}
           >
-            {cartItemsLength === 0 ? "سله التسوق فارغه الأن"  : "سلة التسوق"}
+            {cartItemsLength === 0 ? "سله التسوق فارغه الأن" : "منتجاتك"}
           </Typography>
 
           <Box sx={cartContainerStyles}>
@@ -122,6 +131,10 @@ const Cart = () => {
               ))}
           </Box>
         </Box>
+        {
+          cartItemsLength === 0 ? null : (<EmptyCartBtn />)
+
+        }
       </Container>
     </Box>
   );

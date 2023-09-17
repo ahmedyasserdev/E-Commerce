@@ -85,7 +85,11 @@ const CartItems = ({ item }) => {
                         bottom: "5px",
                         left: "20px",
                         fill: theme.palette.errorColor.main,
-                        color: theme.palette.errorColor.main
+                        color: theme.palette.errorColor.main,
+                        transition : "100ms transform ease",
+                        "&:hover" : {
+                            transform : "translateY(-3px) rotate(20deg) "
+                        }
                     }}
                 />
             </Box>

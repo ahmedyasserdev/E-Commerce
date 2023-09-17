@@ -23,12 +23,12 @@ const Products = () => {
 
   return (
     <Box>
-      <Container sx = {{py  : { xs : "20px" , sm :   "30px"} ,display : "flex"  , justifyContent  :"flex-start"   }}  >
-        <Box sx=  {{width : "25%"}}  >
+      <Container sx = {{py  : { xs : "20px" , sm :   "30px"} ,display : "flex"  ,  flexDirection : {xs: "column" , md :"row"} ,justifyContent  :{xs: "center" , sm : "flex-start"  } , gap : {xs :"20px", md : "5px"  },    }}  >
+        <Box sx=  {{width : {xs : "100%" , md  : "25%"  }}}  >
           <ProductSidebar />
         </Box>
 
-        <Box sx=  {{width : "75%"}} >
+        <Box sx=  {{width :  {xs : "100%" , md  : "75%"  }}} >
           <ProdcutList  products ={products} />
         </Box>
 

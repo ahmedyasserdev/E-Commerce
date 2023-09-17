@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import RatingBox from "../Rating/RatingBox";
-import { Link } from "react-router-dom";
+import { Box, IconButton, useTheme } from "@mui/material";
+import ProductItem from "../ProductItem/ProductItem";
 
 const Slider = ({ data }) => {
     const theme = useTheme();
@@ -34,18 +33,7 @@ const Slider = ({ data }) => {
             </IconButton>
 
             <Box sx={{ display: "flex", height: "100%", transition: "all 300ms ease", transform: `translateX(${slide * -250}px)` }}>
-                {data.map(({ id, title, image, rating, reviews, price }) => (
-                    <Link key={id} to={`/product/${id}`} >
-                        <Box sx={{ backgroundColor: "white", width: "270px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", padding: "5px", margin: "0 5px", borderRadius: "12px" }}>
-                            <img src={image} height="auto" width="70%" style={{ objectFit: "contain" }} alt={title} />
-                            <Box>
-                                <Typography variant="h5" fontSize={{ xs: "19px", sm: "22px" }} fontWeight={600} color={theme.palette.primaryColor.main}>{title}</Typography>
-                                <RatingBox rating={rating} reviews={reviews} />
-                                <Typography variant="h6" gutterBottom fontWeight={600} color={theme.palette.primaryColor.main} fontSize={{ xs: "15px", sm: "19px" }} sx={{ textAlign: "center" }}>${price}</Typography>
-                            </Box>
-                        </Box>
-                    </Link>
-                ))}
+                <ProductItem products={data} />
             </Box>
 
             <IconButton disabled={isSlideDisabled("right")} sx={{ ...IconButtonStyle, left: "10px" }} onClick={() => handleClick("right")}>

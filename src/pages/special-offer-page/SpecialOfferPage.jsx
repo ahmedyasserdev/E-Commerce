@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Box, Typography, useTheme } from "@mui/material";
 import { specialOffers } from "../../data/special-offers";
 import { useState } from "react";
-import RatingBox from "../../components/Rating/RatingBox";
 import AddToCartBox from "../../components/addToCartBox/addToCartBox";
+import RatingBox from "../../components/Rating/RatingBox";
+
 
 const ImageBox = ({ img, index, setImgIndex }) => (
   <img
@@ -24,10 +26,15 @@ const ImageBox = ({ img, index, setImgIndex }) => (
 const SpecialOfferPage = () => {
   const { id } = useParams();
   const product = specialOffers.find((p) => p.id === +id);
-  const { images, title, rating, reviews, price, discount } = product;
+  const { images, title, rating, reviews, price, discount  } = product;
   const [imgIndex, setImgIndex] = useState(0);
   const calculatedPrice = price - (discount * price) / 100;
   const theme = useTheme();
+
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
 
   return (
     <Box sx={{ backgroundColor: "white" }}>
@@ -59,7 +66,7 @@ const SpecialOfferPage = () => {
               marginInline: "auto",
               objectFit: "contain",
             }}
-            src={images[imgIndex]}
+            src={images[imgIndex] }
             alt={title}
           />
 
@@ -112,7 +119,7 @@ const SpecialOfferPage = () => {
             </Typography>
           </Box>
 
-          <AddToCartBox />
+          <AddToCartBox product = {product}  />
         </Box>
       </Container>
     </Box>

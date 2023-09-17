@@ -8,6 +8,7 @@ import Home from './pages/home/Home';
 import Cart from './pages/cart/Cart';
 import SingleProduct from './pages/single-product/SingleProduct';
 import SpecialOfferPage from './pages/special-offer-page/SpecialOfferPage';
+import Products from './pages/products/Products';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path = "/cart" element={<Cart />} />
-              <Route papth = "/products" element={<products />} />
+              <Route path = "/products" element={<Products />} />
               <Route path = "/product/:id" element={<SingleProduct />} />
               <Route path = "/special-offer/:id" element={<SpecialOfferPage/>} />
 

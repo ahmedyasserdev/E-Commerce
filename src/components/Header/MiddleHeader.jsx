@@ -10,6 +10,8 @@ import {
 import { styled } from "@mui/material/styles";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { cartItemsNumber } from "../../redux/slices/cartSlice";
 
 const Searcher = styled("div")(({ theme }) => ({
     position: "relative",
@@ -53,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MiddleHeader = () => {
-    const numberOfItems = 1;
+    const numberOfItems =  useSelector(cartItemsNumber)  ;
     const theme = useTheme();
     return (
         <Container>

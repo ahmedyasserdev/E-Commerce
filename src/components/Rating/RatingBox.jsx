@@ -16,7 +16,7 @@ const RatingBox = ({ rating, reviews }) => {
 
                 }}
             >
-                <Typography variant="span" fontSize={{ xs: "12px", sm: "15px" }} fontWeight={600}>
+                <Typography color = {theme.palette.primaryColor.main} variant="span" fontSize={{ xs: "12px", sm: "15px" }} fontWeight={600}>
                     {rating}
                 </Typography>
                 <Star sx={{ color: theme.palette.warningColor.main }} />

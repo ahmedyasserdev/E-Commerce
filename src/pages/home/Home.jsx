@@ -1,31 +1,24 @@
-import {useEffect , useState} from 'react'
+import { useEffect } from 'react';
 import Slider from './../../components/Slider/Slider';
 import HeadingTitle from './../../components/HeadingTitle/HeadingTitle';
 import Brands from './../../components/Brands/Brands';
 import Banner from './../../components/Banner/Banner';
 import Category from './../../components/Category/Category';
 import SpecialOffers from './../../components/SpecialOffers/SpecialOffers';
+import { fetchProducts, selectProducts } from '../../redux/slices/productSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
-  const [products , setProducts] = useState([])
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/products")
-      const data = await response.json()
-      setProducts(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    dispatch(fetchProducts());
+  }, []);
 
+  const laptops = products.filter(p => p.isLaptop === true);
+  const mobiles = products.filter(p => p.isLaptop === false);
 
-
-  const laptops = products.filter(p => p.isLaptop === true)
-  const mobiles = products.filter(p => p.isLaptop === false)
   return (
     <>
       <Banner />
@@ -38,7 +31,7 @@ const Home = () => {
       <HeadingTitle title={"اشتري حسب البراند"} />
       <Brands />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

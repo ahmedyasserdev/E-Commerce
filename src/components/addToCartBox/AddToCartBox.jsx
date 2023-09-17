@@ -1,18 +1,16 @@
 import {
-    Stack,
-    Typography,
     Button,
-    TextField,
     useTheme,
+    Box
 } from "@mui/material";
+import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
-const AddToCartBox = () => {
+const AddToCartBox = ({product}) => {
     const theme = useTheme();
+    const dispatch = useDispatch()
     return (
-        <Stack
-            direction={"column"}
-            gap={{ xs: "15px", sm: "20px" }}
-            alignItems={"flex-end"}
+        <Box
             sx={{
                 fontSize: "21px",
                 fontWeight: 700,
@@ -20,34 +18,9 @@ const AddToCartBox = () => {
                 color: theme.palette.primaryColor.main,
             }}
         >
-            <Stack direction={"row"} gap={"10px"} alignItems={"center"}>
-                <Typography variant="label" color="">
-                    الكميه
-                </Typography>
-                <TextField
-                sx={{
-                    border: `1px solid ${theme.palette.primaryColor.main}`,
-
-                    ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input": {
-                        color: theme.palette.primaryColor.main,
-                        p : "10px 15px"
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'transparent',
-                        },
-                    },
-                  
-                }}
-                type="number"
-                min="1"
-                max="10"
-                variant="outlined"
-            />
-            
-            </Stack>
-
+        
             <Button
+            onClick = {() => dispatch(addToCart(product)) }
                 sx={{
                     backgroundColor: "#fff",
                     borderRadius: "8px",
@@ -64,7 +37,7 @@ const AddToCartBox = () => {
             >
                 اضف الي سله التسوق
             </Button>
-        </Stack>
+        </Box>
     );
 };
 

@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Box, Typography, useTheme } from "@mui/material";
 import RatingBox from "../../components/Rating/RatingBox";
 import AddToCartBox from "./../../components/addToCartBox/AddToCartBox";
-
+import { fetchProductById, isLoading, selectProduct } from "../../redux/slices/productSlice"; 
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader/Loader";
 const SingleProduct = () => {
-  const [product, setProduct] = useState(null)
   const { id } = useParams();
   const theme = useTheme();
-
-  const getProduct = async (productId) => {
-    try {
-      const response = await fetch(`http://localhost:8000/products/${productId}`)
-      const data = await response.json()
-      setProduct(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const dispatch = useDispatch()
+  const product = useSelector(selectProduct)
+  const loading = useSelector(isLoading)
 
   useEffect(() => {
-    getProduct(id)
+    dispatch(fetchProductById(id))
+    window.scrollTo(0,0)
   }, [id])
 
   const containerStyles = {
@@ -57,12 +52,15 @@ const SingleProduct = () => {
     objectFit: "contain"
   };
 
-  if (!product) {
-    return <div>Loading...</div>;
-  }
-
-  const { image, title, rating, reviews, price } = product;
+ 
   
+
+  if (loading) {
+    return (
+       <Loader />
+       
+       )
+  }
   
 
 
@@ -91,7 +89,7 @@ const SingleProduct = () => {
             ${product?.price}
           </Typography>
 
-          <AddToCartBox />
+          <AddToCartBox  product = {product} />
         </Box>
       </Container>
     </Box>

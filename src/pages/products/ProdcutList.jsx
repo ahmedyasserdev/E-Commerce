@@ -6,7 +6,7 @@ import ProductItem from '../../components/ProductItem/ProductItem';
 const ProductList = ({ products }) => {
     const theme = useTheme()
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage =9;
+  const productsPerPage =8;
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
